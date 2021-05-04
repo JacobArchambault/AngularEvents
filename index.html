@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
-    <title>ng-click</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js">
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"> </script>
 </head>
 
-<body ng-app="myApp">
-
-    <main ng-controller="myCtrl">
-        <button ng-click="count = count + 1">Click Here!</button>
-        <p>Count: {{ count }}</p>
+<body ng-app="mpgApp">
+    <main ng-controller='mpgCtrl'>
+        <p>Enter Miles : <input type="text" ng-model="miles" required></p>
+        <p>Enter Gallons: <input type="text" ng-model="gallons" required></p>
+        <p> <button ng-click="calcMPG()"> Click for MPG </button> </p>
+        <p ng-bind="mpg"> </p>
     </main>
-
-
     <script>
-        var app = angular.module('myApp', []);
-
-        app.controller('myCtrl', function ($scope) {
-            $scope.count = 0;         // initialize the count variable
+        angular.module('mpgApp', []).controller('mpgCtrl', function ($scope) {
+            $scope.calcMPG = function () {
+                if ($scope.gallons == 0 || isNaN($scope.gallons)) {
+                    $scope.mpg = "MPG = " + 0;
+                }
+                else {
+                    $scope.mpg = "MPG = " + ($scope.miles / $scope.gallons).toFixed(1);
+                }
+            }
         });
     </script>
 </body>
