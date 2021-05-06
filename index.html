@@ -1,27 +1,33 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"> </script>
+    <title>AngularJS</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js">
+    </script>
 </head>
 
-<body ng-app="mpgApp">
-    <main ng-controller='mpgCtrl'>
-        <p>Enter Miles : <input type="number" ng-model="miles" required></p>
-        <p>Enter Gallons: <input type="number" ng-model="gallons" required></p>
-        <p> <button ng-click="calcMPG()"> Click for MPG </button> </p>
-        <p ng-bind="mpg"> </p>
+<body ng-app="myApp">
+    <main ng-controller="myCtrl">
+        <h2>AngularJS Example: show/hide</h2>
+        <table cellspacing="12">
+            <tr>
+                <td><input type="checkbox" ng-model="disabled">Disable Button</td>
+                <td><button ng-disabled="disabled" ng-click="count = count + 1">Increment Count</button> Total:{{count}}
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" ng-model="show_it">Show text if checked.</td>
+                <td><span ng-show="show_it">Roses are red.</span></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" ng-model="hide_it">Hide text if checked.</td>
+                <td><span ng-hide="hide_it">Violets are blue.</span></td>
+            </tr>
+        </table>
     </main>
     <script>
-        angular.module('mpgApp', []).controller('mpgCtrl', function ($scope) {
-            $scope.calcMPG = function () {
-                if ($scope.gallons == 0 || isNaN($scope.gallons)) {
-                    $scope.mpg = "MPG = " + 0;
-                }
-                else {
-                    $scope.mpg = "MPG = " + ($scope.miles / $scope.gallons).toFixed(1);
-                }
-            }
+        angular.module('myApp', []).controller('myCtrl', function ($scope) {
+            $scope.count = 0;         // initialize the count variable
         });
     </script>
 </body>
