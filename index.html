@@ -1,24 +1,32 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <title>ng-click</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js">
+    <title>AngularJS</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js">
     </script>
 </head>
 
 <body ng-app="myApp">
-
     <main ng-controller="myCtrl">
-        <button ng-click="count = count + 1">Click Here!</button>
-        <p>Count: {{ count }}</p>
+        <h2>AngularJS Example: show/hide</h2>
+        <table cellspacing="12">
+            <tr>
+                <td><input type="checkbox" ng-model="disabled">Disable Button</td>
+                <td><button ng-disabled="disabled" ng-click="count = count + 1">Increment Count</button> Total:{{count}}
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" ng-model="show_it">Show text if checked.</td>
+                <td><span ng-show="show_it">Roses are red.</span></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" ng-model="hide_it">Hide text if checked.</td>
+                <td><span ng-hide="hide_it">Violets are blue.</span></td>
+            </tr>
+        </table>
     </main>
-
-
     <script>
-        var app = angular.module('myApp', []);
-
-        app.controller('myCtrl', function ($scope) {
+        angular.module('myApp', []).controller('myCtrl', function ($scope) {
             $scope.count = 0;         // initialize the count variable
         });
     </script>
